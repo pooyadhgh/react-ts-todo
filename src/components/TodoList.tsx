@@ -6,8 +6,8 @@ const Todolist: React.FC<{ todos: Todo[] }> = ({ todos }) => {
   return (
     <Card>
       <ul>
-        {todos.map(item => (
-          <TodoItem item={item} />
+        {todos.map((item, index) => (
+          <TodoItem key={index} item={item} />
         ))}
       </ul>
     </Card>

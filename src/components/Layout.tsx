@@ -5,7 +5,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="flex flex-col items-center my-5">{children}</main>
+      <main className="flex flex-col items-center my-5 h-full">{children}</main>
       <Footer />
     </>
   );
