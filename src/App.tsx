@@ -4,7 +4,7 @@ import Layout from './components/Layout';
 const App: React.FC = () => {
   return (
     <Layout>
-      <Input />
+      <Input onSubmit={data => console.log(data)} />
     </Layout>
   );
 };
