@@ -21,6 +21,12 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit(formValues);
+    setFormValues({
+      todo: '',
+      date: '',
+      priority: '',
+      description: '',
+    });
   };
 
   return (
