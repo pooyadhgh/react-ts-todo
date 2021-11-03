@@ -6,6 +6,7 @@ import Todo from './types/Todo';
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  console.log(todos);
 
   return (
     <Layout>

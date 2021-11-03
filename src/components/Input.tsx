@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import Todo from '../types/Todo';
+import { v4 as uuidv4 } from 'uuid';
 
 type Props = {
   onSubmit: (formValues: Todo) => void;
 };
 
 const Input: React.FC<Props> = ({ onSubmit }) => {
-  const [formValues, setFormValues] = useState<Todo>({
+  const initialState = {
+    id: '',
     todo: '',
     date: '',
     priority: '',
     description: '',
-  });
+    isDone: false,
+  };
+  const [formValues, setFormValues] = useState<Todo>(initialState);
 
   const inputChangeHandler = (event: any): void => {
     setFormValues({ ...formValues, [event.target.id]: event.target.value });
@@ -20,13 +24,8 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit(formValues);
-    setFormValues({
-      todo: '',
-      date: '',
-      priority: '',
-      description: '',
-    });
+    onSubmit({ ...formValues, id: uuidv4() });
+    setFormValues(initialState);
   };
 
   return (
