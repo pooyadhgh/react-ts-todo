@@ -13,6 +13,8 @@ const Header: React.FC = () => {
         <ul className="flex">
           <li>
             <a
+              target="_blank"
+              rel="noreferrer"
               className="text-white font-medium hover:border-tertiary hover:bg-secondary rounded px-4 py-2"
               href="https://github.com/pooyadhgh/React-Typescript-Todo"
             >

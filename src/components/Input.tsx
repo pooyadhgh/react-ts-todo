@@ -12,7 +12,7 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
     id: '',
     todo: '',
     date: '',
-    priority: '',
+    priority: '1',
     description: '',
     isDone: false,
   };
