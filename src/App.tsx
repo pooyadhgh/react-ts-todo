@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
   return (
     <Layout>
-      <Input onSubmit={todo => setTodos(todos => [...todos, todo])} />
+      <Input onSubmit={todo => setTodos(todos => [todo, ...todos])} />
       <Todolist todos={todos} />
     </Layout>
   );
