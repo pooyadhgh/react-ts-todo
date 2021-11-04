@@ -16,20 +16,27 @@ interface TodoContextInterface {
 const TodoContext = createContext<TodoContextInterface | null>(null);
 
 export const TodoContextProvider: React.FC = ({ children }) => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const initialTodos = localStorage.getItem('todos')
+    ? JSON.parse(localStorage.getItem('todos') as string)
+    : [];
+
+  const [todos, setTodos] = useState<Todo[]>(initialTodos);
   const [filter, setFilter] = useState<string>('All');
 
   const addTodoHandler = (todo: Todo) => {
     setTodos(todos => [todo, ...todos]);
+    localStorage.setItem('todos', JSON.stringify([todo, ...todos]));
   };
 
   const deleteHandler = (id: string) => {
     const filteredTodos = todos.filter(todo => todo.id !== id);
     setTodos(filteredTodos);
+    localStorage.setItem('todos', JSON.stringify(filteredTodos));
   };
 
   const clearAllHandler = () => {
     setTodos([]);
+    localStorage.removeItem('todos');
   };
 
   const completeTodoHandler = (id: string) => {
@@ -37,11 +44,13 @@ export const TodoContextProvider: React.FC = ({ children }) => {
       todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
     );
     setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
   const completeAllHandler = () => {
     const newTodos = todos.map(todo => ({ ...todo, isDone: true }));
     setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   };
 
   const filterTodosHanler = (filter: string) => {
