@@ -35,7 +35,7 @@ const TodoItem: React.FC<{ item: Todo }> = ({ item }) => {
 
       <p className="text-sm text-primary">
         <span className="font-semibold">Priority: </span>
-        {item.priority}/5
+        {item.priority ? item.priority : 1}/5
       </p>
 
       <p className="text-sm text-primary">
