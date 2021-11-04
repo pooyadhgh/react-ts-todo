@@ -1,13 +1,21 @@
 import { useContext } from 'react';
 import TodoContext from '../context/todo-context';
 import Card from './Card';
+import Filter from './Filter';
 import TodoItem from './TodoItem';
 
 const Todolist: React.FC = () => {
   const todoCtx = useContext(TodoContext);
-  const todos = todoCtx?.todos;
+  const { filter, todos } = todoCtx!;
 
-  if (todos?.length === 0)
+  const filteredTodos =
+    filter === 'All'
+      ? todos
+      : filter === 'In progress'
+      ? todos.filter(todo => todo.isDone === false)
+      : todos.filter(todo => todo.isDone === true);
+
+  if (todos.length === 0)
     return (
       <Card>
         <h3 className="text-sm text-primary">No todos, let's add some!</h3>
@@ -20,8 +28,16 @@ const Todolist: React.FC = () => {
         Todo List
       </h2>
 
+      <Filter />
+
+      {filteredTodos.length === 0 && (
+        <h3 className="text-sm text-primary mb-10">
+          No todos found with the selected filter...
+        </h3>
+      )}
+
       <ul>
-        {todos?.map((item, index) => (
+        {filteredTodos?.map((item, index) => (
           <TodoItem key={index} item={item} />
         ))}
       </ul>
@@ -36,7 +52,7 @@ const Todolist: React.FC = () => {
 
       <button
         onClick={todoCtx?.clearAll}
-        className="text-sm text-primary hover:text-secondary m-2"
+        className="text-sm text-primary hover:text-secondary m-2 ml-0"
       >
         <i className="far fa-trash-alt p-1"></i> Clear All
       </button>

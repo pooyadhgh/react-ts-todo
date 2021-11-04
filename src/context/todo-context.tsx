@@ -3,10 +3,12 @@ import Todo from '../types/Todo';
 
 interface TodoContextInterface {
   todos: Todo[];
+  filter: string;
+  editFilter: (filter: string) => void;
   addTodo: (todo: Todo) => void;
   editTodo: () => void;
   deleteTodo: (id: string) => void;
-  filterTodos: () => void;
+  filterTodos: (filter: string) => void;
   completeTodo: (id: string) => void;
   clearAll: () => void;
   completeAll: () => void;
@@ -16,6 +18,7 @@ const TodoContext = createContext<TodoContextInterface | null>(null);
 
 export const TodoContextProvider: React.FC = ({ children }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<string>('All');
 
   const addTodoHandler = (todo: Todo) => {
     setTodos(todos => [todo, ...todos]);
@@ -42,12 +45,18 @@ export const TodoContextProvider: React.FC = ({ children }) => {
     setTodos(newTodos);
   };
 
+  const filterTodosHanler = (filter: string) => {
+    setFilter(filter);
+  };
+
   const contextValue = {
     todos: todos,
+    filter: filter,
+    editFilter: filterTodosHanler,
     addTodo: addTodoHandler,
     editTodo: () => {},
     deleteTodo: deleteHandler,
-    filterTodos: () => {},
+    filterTodos: filterTodosHanler,
     completeTodo: completeTodoHandler,
     clearAll: clearAllHandler,
     completeAll: completeAllHandler,
