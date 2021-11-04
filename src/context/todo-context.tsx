@@ -8,7 +8,6 @@ interface TodoContextInterface {
   addTodo: (todo: Todo) => void;
   editTodo: () => void;
   deleteTodo: (id: string) => void;
-  filterTodos: (filter: string) => void;
   completeTodo: (id: string) => void;
   clearAll: () => void;
   completeAll: () => void;
@@ -56,7 +55,6 @@ export const TodoContextProvider: React.FC = ({ children }) => {
     addTodo: addTodoHandler,
     editTodo: () => {},
     deleteTodo: deleteHandler,
-    filterTodos: filterTodosHanler,
     completeTodo: completeTodoHandler,
     clearAll: clearAllHandler,
     completeAll: completeAllHandler,
