@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Card from './Card';
 import Todo from '../types/Todo';
 import { v4 as uuidv4 } from 'uuid';
+import TodoContext from '../context/todo-context';
 
-type Props = {
-  onSubmit: (formValues: Todo) => void;
-};
-
-const Input: React.FC<Props> = ({ onSubmit }) => {
+const Input: React.FC = () => {
   const initialState = {
     id: '',
     todo: '',
@@ -17,6 +14,7 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
     isDone: false,
   };
   const [formValues, setFormValues] = useState<Todo>(initialState);
+  const todoCtx = useContext(TodoContext);
 
   const inputChangeHandler = (event: any): void => {
     setFormValues({ ...formValues, [event.target.id]: event.target.value });
@@ -24,7 +22,7 @@ const Input: React.FC<Props> = ({ onSubmit }) => {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit({ ...formValues, id: uuidv4() });
+    todoCtx?.addTodo({ ...formValues, id: uuidv4() });
     setFormValues(initialState);
   };
 
