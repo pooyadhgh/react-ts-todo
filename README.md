@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# React-ToDo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application to add/remove Todos, written in React.js and TypeScript using Tailwind CSS.
 
-## Available Scripts
+Onlive Version: [React-ToDo](https://bit.ly/3kegRim)
 
-In the project directory, you can run:
+## Features
 
-### `yarn start`
+- Add todos
+- Remove todos
+- Filter todos
+- Complete All / Remove All todos
+- Responsive to the changes of the viewport
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### HTML5
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Semantic html5 tags such as header, footer, main, section and … are used in their proper places.
 
-### `yarn test`
+### CSS3
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Tailwind CSS is used as a utility-first framework.
+- The whole elements are responsive to the changes of the viewport.
 
-### `yarn build`
+### JavaScript
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React.js is used as the main frontend library because it is easy to handle complex states and is maintainable.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Overall Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Types, Hooks, utility functions, Contexts and components are provided separately.
+- The typical structure convention is used while the application is created with the [Create-React-App package](https://create-react-app.dev/).
 
-### `yarn eject`
+## Tools and Technologies
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React.js
+- Font Awesome
+- Tailwind
+- UUID
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Install Dependencies
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm install
+```
 
-## Learn More
+### Run
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+# Run frontend (:3000)
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Build & Deploy
+
+```
+# Create frontend production build
+npm run build
+```
+
+## License
+
+The MIT License
+Copyright (c) 2021 Pooyadhgh
