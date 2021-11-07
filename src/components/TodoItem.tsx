@@ -13,19 +13,14 @@ const TodoItem: React.FC<{ item: Todo }> = ({ item }) => {
           {item.todo}
         </h3>
         <div className="block flex-none">
-          {!item.isDone ? (
-            <i
-              onClick={() => todoCtx?.completeTodo(item.id)}
-              className="fas fa-check p-1 m-1 text-primary hover:text-secondary cursor-pointer"
-            ></i>
-          ) : (
-            <i
-              onClick={() => todoCtx?.completeTodo(item.id)}
-              className="fas fa-times p-1 m-1 text-primary hover:text-secondary cursor-pointer"
-            ></i>
-          )}
+          <i
+            onClick={() => todoCtx?.completeTodo(item.id)}
+            className={`fas ${
+              item.isDone ? 'fa-times' : 'fa-check'
+            } fa-check p-1 m-1 text-primary hover:text-secondary cursor-pointer`}
+          ></i>
 
-          <i className="far fa-edit p-1 m-1 text-primary hover:text-secondary cursor-pointer"></i>
+          {/* <i className="far fa-edit p-1 m-1 text-primary hover:text-secondary cursor-pointer"></i> */}
           <i
             onClick={() => todoCtx?.deleteTodo(item.id)}
             className="far fa-trash-alt p-1 m-1 text-primary hover:text-secondary cursor-pointer"
